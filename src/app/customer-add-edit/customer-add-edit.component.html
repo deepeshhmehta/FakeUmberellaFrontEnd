@@ -1,0 +1,77 @@
+<div class="card">
+  <div class="card-body">
+    <form [formGroup]="angForm" novalidate>
+      
+      <div class="form-group">
+        <label class="col-md-4">Name</label>
+        <input type="hidden" class="form-control"
+          formControlName="id" 
+          #id />
+        <input type="text" class="form-control"
+          formControlName="name" placeholder="Company Name" 
+          #name />
+      </div>
+      <div *ngIf="angForm.controls['name'].invalid && (angForm.controls['name'].dirty || angForm.controls['name'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['name'].errors.required">
+          Name is required.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-4">Person</label>
+        <input type="text" class="form-control" 
+          formControlName="person" placeholder="Contact Person"
+          #person />
+      </div>
+      <div *ngIf="angForm.controls['person'].invalid && (angForm.controls['person'].dirty || angForm.controls['person'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['person'].errors.required">
+          Person is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Location (Zip)</label>
+        <input type="text" class="form-control" 
+          formControlName="location" placeholder="Enter a Zip Code"
+          #location />
+      </div>
+      <div *ngIf="angForm.controls['location'].invalid && (angForm.controls['location'].dirty || angForm.controls['location'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['location'].errors.required">
+          Location is required.
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <label class="col-md-4">Telephone</label>
+        <input type="text" class="form-control" 
+          formControlName="telephone" placeholder="Contact No."
+          #telephone />
+      </div>
+      <div *ngIf="angForm.controls['telephone'].invalid && (angForm.controls['telephone'].dirty || angForm.controls['telephone'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['telephone'].errors.required">
+          Telephone is required.
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="col-md-4">Employees</label>
+        <input type="number" class="form-control" 
+          formControlName="employees" placeholder="Number of Employees"
+          #employees />
+      </div>
+      <div *ngIf="angForm.controls['employees'].invalid && (angForm.controls['employees'].dirty || angForm.controls['employees'].touched)" class="alert alert-danger">
+        <div *ngIf="angForm.controls['employees'].errors.mins">
+          Employees must be greater than 0.
+        </div>
+      </div>
+
+
+      <div class="form-group">
+        <button type="submit" class="btn btn-primary" (click) = "addUpdateCustomer()"
+        [disabled]="angForm.pristine || angForm.invalid" >
+          <span *ngIf="company.id !== 0">Edit</span> <span *ngIf="company.id === 0">Create</span> Customer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
