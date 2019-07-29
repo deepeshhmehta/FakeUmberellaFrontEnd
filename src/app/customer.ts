@@ -4,5 +4,5 @@ export class Customer {
   person: string = '';
   telephone: string = '';
   location: string = '';
-  employees: number = 1;
+  employee: number = 1;
 }

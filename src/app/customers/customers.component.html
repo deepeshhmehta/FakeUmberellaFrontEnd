@@ -1,3 +1,9 @@
+<div style="text-align:center" *ngIf="popUp">
+  <h1>
+    {{popUpMessage}}
+  </h1>
+</div>
+
 <div class="container">
 	<table class="text-center">
 		<tr>
@@ -17,7 +23,7 @@
 				LOCATION
 			</th>
 			<th>
-				EMPLOYEES
+				EMPLOYEE
 			</th>
 		</tr>
 		<tr *ngFor="let company of customers">
@@ -37,11 +43,16 @@
 				{{company.location}}
 			</td>
 			<td>
-				{{company.employees}}
+				{{company.employee}}
 			</td>
 			<td>
 				<button class="btn btn-primary" (click)="Edit(company)">
 					Edit
+				</button>
+			</td>
+			<td>
+				<button class="btn btn-danger" (click)="Delete(company)">
+					Delete
 				</button>
 			</td>
 		</tr>
