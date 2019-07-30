@@ -1,1 +1,38 @@
-<p>customer-rain-list works!</p>
+<div style="text-align:center" *ngIf="popUp">
+  <h1>
+    {{popUpMessage}}
+  </h1>
+</div>
+
+<div class="container">
+	<table class="text-center">
+		<tr>
+			<th>
+				ID
+			</th>
+			<th>
+				NAME
+			</th>
+			<th>
+				LOCATION
+			</th>
+			<th>
+				RAIN PREDICTIONS
+			</th>
+		</tr>
+		<tr *ngFor="let data of dataSet">
+			<td>
+				{{data.id}}
+			</td>
+			<td>
+				{{data.name}}
+			</td>
+			<td>
+				{{data.location}}
+			</td>
+			<td>
+				{{data.rainData}}
+			</td>
+		</tr>
+	</table>	
+</div>

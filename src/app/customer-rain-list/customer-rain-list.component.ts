@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {CustomersService} from '../Services/customers.service';
 
 @Component({
   selector: 'app-customer-rain-list',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customer-rain-list.component.css']
 })
 export class CustomerRainListComponent implements OnInit {
-
-  constructor() { }
+	dataSet: any;
+  constructor(private cs: CustomersService) { }
 
   ngOnInit() {
+  	this.cs.getRainDataSet().subscribe(res => {
+  		this.dataSet = res;
+  		console.log(this.dataSet);
+  	})
   }
 
 }
