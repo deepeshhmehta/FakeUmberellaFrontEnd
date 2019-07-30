@@ -19,6 +19,10 @@ export class CustomersService {
   		return this.http.get(`${this.uri}/customers/rainprediction`);	
   	}
 
+  	getTopEmployeeSet(){
+  		return this.http.get(`${this.uri}/customers/topfour`);	
+  	}
+
  	addEditCustomer(company) {
 		const customer = {
 		  id: company.id,

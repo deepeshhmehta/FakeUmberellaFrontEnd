@@ -11,6 +11,8 @@ import { SlimLoadingBarModule } from 'ng2-slim-loading-bar';
 import { HttpClientModule } from '@angular/common/http';
 import { CustomerAddEditComponent } from './customer-add-edit/customer-add-edit.component';
 
+import { NgxUiLoaderModule, NgxUiLoaderHttpModule } from  'ngx-ui-loader';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { CustomerAddEditComponent } from './customer-add-edit/customer-add-edit.
     AppRoutingModule,
     SlimLoadingBarModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxUiLoaderModule,
+    NgxUiLoaderHttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]
