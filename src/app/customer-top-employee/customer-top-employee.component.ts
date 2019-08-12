@@ -16,43 +16,28 @@ export class CustomerTopEmployeeComponent implements OnInit {
 	ngOnInit() {
 		this.cs.getTopEmployeeSet().subscribe(res => {
 			console.log(res);
-			let greenDataPoints = [];
-			let redDataPoints = [];
-			let x = 0;
+			let dataPoints = [];
+
 			res['rain'].forEach(function(value, index, arr){
-				const obj = {y: value.employee, label: value.name, x: x};
-				greenDataPoints.push(obj);
-				x++;
+				const obj = {y: value.employee, label: value.name, color: 'darkGreen'};
+				dataPoints.push(obj);
+		
 			})
 			res['noRain'].forEach(function(value, index, arr){
-				const obj = {y: value.employee, label: value.name, x: x};
-				redDataPoints.push(obj);
-				x++;
+				const obj = {y: value.employee, label: value.name, color: 'red'};
+				dataPoints.push(obj);
+		
 			})
 
-			console.log(greenDataPoints);
-			console.log(redDataPoints);
-
-			renderChart(redDataPoints,greenDataPoints);
+			renderChart(dataPoints);
 
 		});
-		// console.log(this.dataSet);
-		// let redDataPoints = [];
-		// dataSet['noRain'].forEach(function(value,index,arr){
-		// 	const obj = {y: value.employee, label: value.name};
-		// 	redDataPoints.push(obj);
-		// })
-		// let greenDataPoints = [];
-		// dataSet['rain'].forEach(function(value,index,arr){
-		// 	const obj = {y: value.employee, label: value.name};
-		// 	greenDataPoints.push(obj);
-		// })
 
 		
     }
 }
 
-function renderChart(redDataPoints,greenDataPoints){
+function renderChart(dataPoints){
 	let chart = new CanvasJS.Chart("chartContainer", {
 		animationEnabled: true,
 		exportEnabled: true,
@@ -61,12 +46,7 @@ function renderChart(redDataPoints,greenDataPoints){
 		},
 		data: [{
 			type: "column",
-			color: "red",
-			dataPoints: redDataPoints
-		},{
-			type: "column",
-			color: "green",
-			dataPoints: greenDataPoints
+			dataPoints: dataPoints
 		}]
 	});
 		
