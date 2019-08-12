@@ -18,16 +18,21 @@ export class CustomerTopEmployeeComponent implements OnInit {
 			console.log(res);
 			let dataPoints = [];
 
-			res['rain'].forEach(function(value, index, arr){
-				const obj = {y: value.employee, label: value.name, color: 'darkGreen'};
+			res['data'].forEach(function(value, index, arr){
+				const obj = {y: value.employee, label: value.name, color: value.color};
 				dataPoints.push(obj);
+			});
+			
+			// res['rain'].forEach(function(value, index, arr){
+			// 	const obj = {y: value.employee, label: value.name, color: value.color};
+			// 	dataPoints.push(obj);
 		
-			})
-			res['noRain'].forEach(function(value, index, arr){
-				const obj = {y: value.employee, label: value.name, color: 'red'};
-				dataPoints.push(obj);
+			// })
+			// res['noRain'].forEach(function(value, index, arr){
+			// 	const obj = {y: value.employee, label: value.name, color: value.color};
+			// 	dataPoints.push(obj);
 		
-			})
+			// })
 
 			renderChart(dataPoints);
 
